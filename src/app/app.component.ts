@@ -1,12 +1,10 @@
 import {Component} from '@angular/core';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-
 export class AppComponent {
   title = 'JOGO DA VELHA';
 
@@ -43,8 +41,8 @@ export class AppComponent {
   public play: any;
   public setxo = 0;
   public jogador = '';
-  public j1 = 'Player1 X';
-  public j2 = 'Player2 O';
+  public j1 = 'Player1';
+  public j2 = 'Player2';
 
   novaPartida(){
     this.clk1 = '--';
@@ -76,13 +74,13 @@ export class AppComponent {
       this.po[i] = 0;
     }
   }
-  // tslint:disable-next-line:typedef
+
   reset(){
     this.novaPartida();
     this.vxx = 0;
     this.voo = 0;
-    this.j1 = "Player 1";
-    this.j2 = "Player 2";
+    this.j1 = 'Player 1';
+    this.j2 = 'Player 2';
   }
   vitoria_x() {
     if (this.lancex >= 3) {
@@ -214,7 +212,7 @@ export class AppComponent {
   }
 
   click(numero: number) {
-if((this.vx === 0)&&(this.vo === 0)) {
+if ((this.vx === 0) && (this.vo === 0)) {
   if ((numero === 1) && (this.clk1 === '--')) {
     if (this.setxo === 0) {
       this.clk1 = 'X';
@@ -357,22 +355,21 @@ if((this.vx === 0)&&(this.vo === 0)) {
   this.vitoria_x();
   this.vitoria_o();
 }
-
-    console.log('clicou no ' + numero);
-    console.log('valor de vo = ' + this.vo);
-    console.log('valor de voo = ' + this.voo);
-    console.log('valor de vx = ' + this.vx);
-    console.log('valor de vxx = ' + this.vxx);
-    console.log('Valor  de a1 = ' + this.a1);
-    console.log('Valor  de a2 = ' + this.a2);
-    console.log('Valor  de a3 = ' + this.a3);
-    console.log('Valor  de a4 = ' + this.a4);
-    console.log('Valor  de a5 = ' + this.a5);
-    console.log('Valor  de a6 = ' + this.a6);
-    console.log('Valor  de a7 = ' + this.a7);
-    console.log('Valor  de a8 = ' + this.a8);
-    console.log('Valor  de a9 = ' + this.a9);
-    console.log(this.j1);
-    console.log(this.j2);
+console.log('clicou no ' + numero);
+console.log('valor de vo = ' + this.vo);
+console.log('valor de voo = ' + this.voo);
+console.log('valor de vx = ' + this.vx);
+console.log('valor de vxx = ' + this.vxx);
+console.log('Valor  de a1 = ' + this.a1);
+console.log('Valor  de a2 = ' + this.a2);
+console.log('Valor  de a3 = ' + this.a3);
+console.log('Valor  de a4 = ' + this.a4);
+console.log('Valor  de a5 = ' + this.a5);
+console.log('Valor  de a6 = ' + this.a6);
+console.log('Valor  de a7 = ' + this.a7);
+console.log('Valor  de a8 = ' + this.a8);
+console.log('Valor  de a9 = ' + this.a9);
+console.log(this.j1);
+console.log(this.j2);
   }
 }

@@ -12,10 +12,9 @@
     <a href="#about">Sobre Nós</a>
     <a href="#about">Contato</a>
   </div>
-  <header class = "poisicao2"
-          [ngStyle]="{'background': '#011940'}"
-  > Jogo Da Velha </header>
+ </h1>
 
+<h1>
   <button class = "poisicao2"
   (click) = "reset()"
   [ngStyle]="{
@@ -36,7 +35,7 @@
   [ngStyle] = " {
   'background': (vx ? '#30ff1a': '#011573'),
   'left':'45%',
-  'top':'20%',
+  'top':'10%',
   'margin-left':'-80px',
   'margin-top':'40px'}"> {{j1}} </header>
 
@@ -44,14 +43,14 @@
   [ngStyle] = " {
   'background': (vo ? '#30ff1a': '#011573'),
   'left':'61%',
-  'top':'20%',
+  'top':'10%',
   'margin-left':'-90px',
   'margin-top':'40px'}"> {{j2}} </header>
 
   <header class = "poisicao2"
   [ngStyle] = " {
   'left':'51%',
-  'top':'30%',
+  'top':'20%',
   'background': '#011573',
   'margin-left':'-70px',
   'margin-top':'50px'}"> {{vxx}} </header>
@@ -59,21 +58,12 @@
   <header class = "poisicao2"
   [ngStyle] = " {
   'left':'60%',
-  'top':'30%',
+  'top':'20%',
   'background': '#011573',
   'margin-left':'-80px',
   'margin-top':'50px'}"> {{voo}} </header>
 
   <body>
-  <div class=div>
-<form>
-      <input type="text" name="JogadorO"> {{jogador}} <br><br>
-      <button (click)=" click2(1)"> Play </button> <br>
-</form>
-    </div>
-
-<div class="container4">
-
 <table border ="0" class="poisicao">
   <tr>
     <td> <button
@@ -136,7 +126,5 @@
     }"> {{clk9}} </button></td>
   </tr>
 </table>
-  </div>
   </body>
-
 </h1>
