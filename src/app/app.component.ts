@@ -10,279 +10,369 @@ import {Component} from '@angular/core';
 export class AppComponent {
   title = 'JOGO DA VELHA';
 
-  public clk1 = '';
-  public clk2 = '';
-  public clk3 = '';
-  public clk4 = '';
-  public clk5 = '';
-  public clk6 = '';
-  public clk7 = '';
-  public clk8 = '';
-  public clk9 = '';
+  public clk1 = '--';
+  public clk2 = '--';
+  public clk3 = '--';
+  public clk4 = '--';
+  public clk5 = '--';
+  public clk6 = '--';
+  public clk7 = '--';
+  public clk8 = '--';
+  public clk9 = '--';
+  public a1 = 0;
+  public a2 = 0;
+  public a3 = 0;
+  public a4 = 0;
+  public a5 = 0;
+  public a6 = 0;
+  public a7 = 0;
+  public a8 = 0;
+  public a9 = 0;
+  public vt = 0;
   public set = 0;
   public vx = 0;
   public vo = 0;
+  public vxx = 0;
+  public voo = 0;
+  public rx = 0;
+  public ro = 0;
   public lancex = 0;
   public lanceo = 0;
   public px: number[] = [];
   public po: number[] = [];
+  public play: any;
+  public setxo = 0;
+  public jogador = '';
+  public j1 = 'Player1 X';
+  public j2 = 'Player2 O';
 
-
+  novaPartida(){
+    this.clk1 = '--';
+    this.clk2 = '--';
+    this.clk3 = '--';
+    this.clk4 = '--';
+    this.clk5 = '--';
+    this.clk6 = '--';
+    this.clk7 = '--';
+    this.clk8 = '--';
+    this.clk9 = '--';
+    this.a1 = 0;
+    this.a2 = 0;
+    this.a3 = 0;
+    this.a4 = 0;
+    this.a5 = 0;
+    this.a6 = 0;
+    this.a7 = 0;
+    this.a8 = 0;
+    this.a9 = 0;
+    this.set = 0;
+    this.vx = 0;
+    this.vo = 0;
+    this.setxo = 0;
+    this.lancex = 0;
+    this.lanceo = 0;
+    for (let i = 0; i <= 9; i++){
+      this.px[i] = 0;
+      this.po[i] = 0;
+    }
+  }
+  // tslint:disable-next-line:typedef
+  reset(){
+    this.novaPartida();
+    this.vxx = 0;
+    this.voo = 0;
+    this.j1 = "Player 1";
+    this.j2 = "Player 2";
+  }
   vitoria_x() {
     if (this.lancex >= 3) {
-      if (((this.px[1] === 1) && (this.px[2] === 1) && (this.px[3] === 1)) ||
-        ((this.px[4] === 1) && (this.px[5] === 1) && (this.px[6] === 1)) ||
-        ((this.px[7] === 1) && (this.px[8] === 1) && (this.px[9] === 1)) ||
-        ((this.px[1] === 1) && (this.px[4] === 1) && (this.px[7] === 1)) ||
-        ((this.px[2] === 1) && (this.px[5] === 1) && (this.px[8] === 1)) ||
-        ((this.px[3] === 1) && (this.px[6] === 1) && (this.px[9] === 1)) ||
-        ((this.px[1] === 1) && (this.px[5] === 1) && (this.px[9] === 1)) ||
-        ((this.px[3] === 1) && (this.px[5] === 1) && (this.px[7] === 1))) {
-     this.vx = 1;
+      if ((this.px[1] === 1) && (this.px[2] === 1) && (this.px[3] === 1)) {
+        this.vxx++;
+        this.vx = 1;
+        this.a1 = 1;
+        this.a2 = 1;
+        this.a3 = 1;
       }
+      if ((this.px[4] === 1) && (this.px[5] === 1) && (this.px[6] === 1)) {
+        this.vxx++;
+        this.vx = 1;
+        this.a4 = 1;
+        this.a5 = 1;
+        this.a6 = 1;
+      }
+      if ((this.px[7] === 1) && (this.px[8] === 1) && (this.px[9] === 1)) {
+        this.vxx++;
+        this.vx = 1;
+        this.a7 = 1;
+        this.a8 = 1;
+        this.a9 = 1;
+      }
+      if ((this.px[1] === 1) && (this.px[4] === 1) && (this.px[7] === 1)) {
+        this.vxx++;
+        this.vx = 1;
+        this.a1 = 1;
+        this.a4 = 1;
+        this.a7 = 1;
+      }
+      if ((this.px[2] === 1) && (this.px[5] === 1) && (this.px[8] === 1)) {
+        this.vxx++;
+        this.vx = 1;
+        this.a2 = 1;
+        this.a5 = 1;
+        this.a8 = 1;
+      }
+      if ((this.px[3] === 1) && (this.px[6] === 1) && (this.px[9] === 1)) {
+        this.vxx++;
+        this.vx = 1;
+        this.a3 = 1;
+        this.a6 = 1;
+        this.a9 = 1;
+      }
+      if ((this.px[1] === 1) && (this.px[5] === 1) && (this.px[9] === 1)) {
+        this.vxx++;
+        this.vx = 1;
+        this.a1 = 1;
+        this.a5 = 1;
+        this.a9 = 1;
+      }
+      if ((this.px[3] === 1) && (this.px[5] === 1) && (this.px[7] === 1)) {
+        this.vxx++;
+        this.vx = 1;
+        this.a3 = 1;
+        this.a5 = 1;
+        this.a7 = 1;
+      }
+
+
     }
   }
 
-  vitoria() {
+  vitoria_o() {
     if (this.lanceo >= 3) {
-      if (((this.po[1] === 1) && (this.po[2] === 1) && (this.po[3] === 1)) ||
-         ((this.po[4] === 1) && (this.po[5] === 1) && (this.po[6] === 1)) ||
-         ((this.po[7] === 1) && (this.po[8] === 1) && (this.po[9] === 1)) ||
-         ((this.po[1] === 1) && (this.po[4] === 1) && (this.po[7] === 1)) ||
-         ((this.po[2] === 1) && (this.po[5] === 1) && (this.po[8] === 1)) ||
-         ((this.po[3] === 1) && (this.po[6] === 1) && (this.po[9] === 1)) ||
-         ((this.po[1] === 1) && (this.po[5] === 1) && (this.po[9] === 1)) ||
-         ((this.po[3] === 1) && (this.po[5] === 1) && (this.po[7] === 1))) {
-      this.vo = 1;
+      if ((this.po[1] === 1) && (this.po[2] === 1) && (this.po[3] === 1)) {
+        this.voo++;
+        this.vo = 1;
+        this.a1 = 1;
+        this.a2 = 1;
+        this.a3 = 1;
+      }
+      if ((this.po[4] === 1) && (this.po[5] === 1) && (this.po[6] === 1)) {
+        this.voo++;
+        this.vo = 1;
+        this.a4 = 1;
+        this.a5 = 1;
+        this.a6 = 1;
+      }
+      if ((this.po[7] === 1) && (this.po[8] === 1) && (this.po[9] === 1)) {
+        this.voo++;
+        this.vo = 1;
+        this.a7 = 1;
+        this.a8 = 1;
+        this.a9 = 1;
+      }
+      if ((this.po[1] === 1) && (this.po[4] === 1) && (this.po[7] === 1)) {
+        this.voo++;
+        this.vo = 1;
+        this.a1 = 1;
+        this.a4 = 1;
+        this.a7 = 1;
+      }
+      if ((this.po[2] === 1) && (this.po[5] === 1) && (this.po[8] === 1)) {
+        this.voo++;
+        this.vo = 1;
+        this.a2 = 1;
+        this.a5 = 1;
+        this.a8 = 1;
+      }
+      if ((this.po[3] === 1) && (this.po[6] === 1) && (this.po[9] === 1)) {
+        this.voo++;
+        this.vo = 1;
+        this.a3 = 1;
+        this.a6 = 1;
+        this.a9 = 1;
+      }
+      if ((this.po[1] === 1) && (this.po[5] === 1) && (this.po[9] === 1)) {
+        this.voo++;
+        this.vo = 1;
+        this.a1 = 1;
+        this.a5 = 1;
+        this.a9 = 1;
+      }
+      if ((this.po[3] === 1) && (this.po[5] === 1) && (this.po[7] === 1)) {
+        this.voo++;
+        this.vo = 1;
+        this.a3 = 1;
+        this.a5 = 1;
+        this.a7 = 1;
+      }
+
       }
     }
+
+  click2(play: number) {
+  this.play = play;
   }
 
   click(numero: number) {
-
-    if ((numero === 1) && (this.vx === 0) && (this.vo === 0)) {
-      if (this.clk1 === 'X') {
-        if (this.set === 1) {
-          this.px[1] = 0;
-          this.lancex--;
-        }
-        this.clk1 = '0';
-        this.set = 2;
-        this.po[1] = 1;
-        this.lanceo++;
-        // this.vitoria();
-      }
-      else {
-        if (this.set === 2) {
-          this.po[1] = 0;
-          this.lanceo--;
-        }
-        this.clk1 = 'X';
-        this.set = 1;
-        this.px[1] = 1;
-        this.lancex++;
-        // this.vitoria_x();
-      }
-    }
-
-    if ((numero === 2) && (this.vx === 0) && (this.vo === 0)) {
-      if (this.clk2 === 'X') {
-        if (this.set === 3) {
-          this.px[2] = 0;
-          this.lancex--;
-        }
-        this.clk2 = '0';
-        this.set = 4;
-        this.po[2] = 1;
-        this.lanceo++;
-       // this.vitoria();
-      }
-      else {
-        if (this.set === 4) {
-          this.po[2] = 0;
-          this.lanceo--;
-        }
-        this.clk2 = 'X';
-        this.set = 3;
-        this.px[2] = 1;
-        this.lancex++;
-        // this.vitoria_x();
-      }
-    }
-    if ((numero === 3) && (this.vx === 0) && (this.vo === 0)) {
-      if (this.clk3 === 'X') {
-        if (this.set === 5) {
-          this.px[3] = 0;
-          this.lancex--;
-        }
-        this.clk3 = '0';
-        this.set = 6;
-        this.po[3] = 1;
-        this.lanceo++;
-       // this.vitoria();
-      }
-      else {
-        if (this.set === 6) {
-          this.po[3] = 0;
-          this.lanceo--;
-        }
-        this.clk3 = 'X';
-        this.set = 5;
-        this.px[3] = 1;
-        this.lancex++;
-        // this.vitoria_x();
-      }
-    }
-
-    if ((numero === 4) && (this.vx === 0) && (this.vo === 0)) {
-      if (this.clk4 === 'X') {
-        if (this.set === 7) {
-          this.px[4] = 0;
-          this.lancex--;
-        }
-        this.clk4 = '0';
-        this.set = 8;
-        this.po[4] = 1;
-        this.lanceo++;
-      // this.vitoria();
-      }
-    else {
-        if (this.set === 8) {
-          this.po[4] = 0;
-          this.lanceo--;
-        }
-        this.clk4 = 'X';
-        this.set = 7;
-        this.px[4] = 1;
-        this.lancex++;
-       // this.vitoria_x();
+if((this.vx === 0)&&(this.vo === 0)) {
+  if ((numero === 1) && (this.clk1 === '--')) {
+    if (this.setxo === 0) {
+      this.clk1 = 'X';
+      this.set = 2;
+      this.px[1] = 1;
+      this.lancex++;
+      this.setxo = 1;
+    } else {
+      this.clk1 = 'O';
+      this.set = 1;
+      this.po[1] = 1;
+      this.lanceo++;
+      this.setxo = 0;
     }
   }
-    if ((numero === 5) && (this.vx === 0) && (this.vo === 0)) {
-      if (this.clk5 === 'X') {
-        if (this.set === 9) {
-          this.px[5] = 0;
-          this.lancex--;
-        }
-        this.clk5 = '0';
-        this.set = 10;
-        this.po[5] = 1;
-        this.lanceo++;
-       // this.vitoria();
-      }
-      else {
-        if (this.set === 10) {
-          this.po[5] = 0;
-          this.lanceo--;
-        }
-        this.clk5 = 'X';
-        this.set = 9;
-        this.px[5] = 1;
-        this.lancex++;
-       // this.vitoria_x();
-      }
+
+  if ((numero === 2) && (this.clk2 === '--')) {
+    if (this.setxo === 0) {
+      this.clk2 = 'X';
+      this.set = 4;
+      this.px[2] = 1;
+      this.lancex++;
+      this.setxo = 1;
+    } else {
+      this.clk2 = 'O';
+      this.set = 3;
+      this.po[2] = 1;
+      this.lanceo++;
+      this.setxo = 0;
     }
-    if ((numero === 6) && (this.vx === 0) && (this.vo === 0)) {
-      if (this.clk6 === 'X') {
-        if (this.set === 11) {
-          this.px[6] = 0;
-          this.lancex--;
-        }
-        this.clk6 = '0';
-        this.set = 12;
-        this.po[6] = 1;
-        this.lanceo++;
-        // this.vitoria();
-      }
-      else {
-        if (this.set === 12) {
-          this.po[6] = 0;
-          this.lanceo--;
-        }
-        this.clk6 = 'X';
-        this.set = 11;
-        this.px[6] = 1;
-        this.lancex++;
-        // this.vitoria_x();
-      }
+  }
+  if ((numero === 3) && (this.clk3 === '--')) {
+    if (this.setxo === 0) {
+      this.clk3 = 'X';
+      this.set = 6;
+      this.px[3] = 1;
+      this.lancex++;
+      this.setxo = 1;
+
+    } else {
+      this.clk3 = 'O';
+      this.set = 5;
+      this.po[3] = 1;
+      this.lanceo++;
+      this.setxo = 0;
     }
-    if ((numero === 7) && (this.vx === 0) && (this.vo === 0)) {
-      if (this.clk7 === 'X') {
-        if (this.set === 13) {
-          this.px[7] = 0;
-          this.lancex--;
-        }
-        this.clk7 = '0';
-        this.set = 14;
-        this.po[7] = 1;
-        this.lanceo++;
-       // this.vitoria();
-      }
-      else {
-        if (this.set === 14) {
-          this.po[7] = 0;
-          this.lanceo--;
-        }
-        this.clk7 = 'X';
-        this.set = 13;
-        this.px[7] = 1;
-        this.lancex++;
-       // this.vitoria_x();
-      }
+  }
+
+  if ((numero === 4) && (this.clk4 === '--')) {
+    if (this.setxo === 0) {
+      this.clk4 = 'X';
+      this.set = 8;
+      this.px[4] = 1;
+      this.lancex++;
+      this.setxo = 1;
+    } else {
+      this.clk4 = 'O';
+      this.set = 7;
+      this.po[4] = 1;
+      this.lanceo++;
+      this.setxo = 0;
     }
-    if ((numero === 8) && (this.vx === 0) && (this.vo === 0)) {
-      if (this.clk8 === 'X') {
-        if (this.set === 17) {
-          this.px[9] = 0;
-          this.lancex--;
-        }
-        this.clk8 = '0';
-        this.set = 16;
-        this.po[8] = 1;
-        this.lanceo++;
-        // this.vitoria();
-      }
-      else {
-        if (this.set === 16) {
-          this.po[8] = 0;
-          this.lanceo--;
-        }
-        this.clk8 = 'X';
-        this.set = 15;
-        this.px[8] = 1;
-        this.lancex++;
-        // this.vitoria_x();
-      }
+  }
+  if ((numero === 5) && (this.clk5 === '--')) {
+    if (this.setxo === 0) {
+
+      this.clk5 = 'X';
+      this.set = 10;
+      this.px[5] = 1;
+      this.lancex++;
+      this.setxo = 1;
+    } else {
+      this.clk5 = 'O';
+      this.set = 9;
+      this.po[5] = 1;
+      this.lanceo++;
+      this.setxo = 0;
     }
-    if ((numero === 9) && (this.vx === 0) && (this.vo === 0)) {
-      if (this.clk9 === 'X') {
-        if (this.set === 17) {
-          this.px[9] = 0;
-          this.lancex--;
-        }
-        this.clk9 = '0';
-        this.set = 18;
-        this.po[9] = 1;
-        this.lanceo++;
-        // this.vitoria();
-      }
-      else {
-        if (this.set === 18) {
-          this.po[9] = 0;
-          this.lanceo--;
-        }
-        this.clk9 = 'X';
-        this.set = 17;
-        this.px[9] = 1;
-        this.lancex++;
-       // this.vitoria_x();
-      }
+  }
+  if ((numero === 6) && (this.clk6 === '--')) {
+    if (this.setxo === 0) {
+      this.clk6 = 'X';
+      this.set = 12;
+      this.px[6] = 1;
+      this.lancex++;
+      this.setxo = 1;
+    } else {
+      this.clk6 = 'O';
+      this.set = 11;
+      this.po[6] = 1;
+      this.lanceo++;
+      this.setxo = 0;
     }
+  }
+  if ((numero === 7) && (this.clk7 === '--')) {
+    if (this.setxo === 0) {
+      this.clk7 = 'X';
+      this.set = 14;
+      this.px[7] = 1;
+      this.lancex++;
+      this.setxo = 1;
+    } else {
+      this.clk7 = 'O';
+      this.set = 13;
+      this.po[7] = 1;
+      this.lanceo++;
+      this.setxo = 0;
+    }
+  }
+  if ((numero === 8) && (this.clk8 === '--')) {
+    if (this.setxo === 0) {
+      this.clk8 = 'X';
+      this.set = 16;
+      this.px[8] = 1;
+      this.lancex++;
+      this.setxo = 1;
+    } else {
+      this.clk8 = 'O';
+      this.set = 15;
+      this.po[8] = 1;
+      this.lanceo++;
+      this.setxo = 0;
+    }
+  }
+  if ((numero === 9) && (this.clk9 === '--')) {
+    if (this.setxo === 0) {
+      this.clk9 = 'X';
+      this.set = 18;
+      this.px[9] = 1;
+      this.lancex++;
+      this.setxo = 1;
+    } else {
+      this.clk9 = 'O';
+      this.set = 17;
+      this.po[9] = 1;
+      this.lanceo++;
+      this.setxo = 0;
+    }
+  }
+  this.vitoria_x();
+  this.vitoria_o();
+}
 
     console.log('clicou no ' + numero);
-    console.log('vitoria de x = ' + this.vx);
-    console.log('vitoria de o = ' + this.vo);
-    this.vitoria_x();
-    this.vitoria();
+    console.log('valor de vo = ' + this.vo);
+    console.log('valor de voo = ' + this.voo);
+    console.log('valor de vx = ' + this.vx);
+    console.log('valor de vxx = ' + this.vxx);
+    console.log('Valor  de a1 = ' + this.a1);
+    console.log('Valor  de a2 = ' + this.a2);
+    console.log('Valor  de a3 = ' + this.a3);
+    console.log('Valor  de a4 = ' + this.a4);
+    console.log('Valor  de a5 = ' + this.a5);
+    console.log('Valor  de a6 = ' + this.a6);
+    console.log('Valor  de a7 = ' + this.a7);
+    console.log('Valor  de a8 = ' + this.a8);
+    console.log('Valor  de a9 = ' + this.a9);
+    console.log(this.j1);
+    console.log(this.j2);
   }
 }

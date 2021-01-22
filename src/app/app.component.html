@@ -1,17 +1,142 @@
-<table border="5">
+<h1>
+  <div class="topnav">
+    <a class="#news" href="#home">Principal</a>
+    <a href="#news">Login</a>
+    <a href="#contact">Jogo da Velha</a>
+    <a href="#contact">Histŕorias</a>
+    <a href="#news">Táticas</a>
+    <a href="#contact">Estratégias</a>
+    <a href="#contact">Notícias</a>
+    <a href="#contact">Torneio</a>
+    <a href="#contact">Doações</a>
+    <a href="#about">Sobre Nós</a>
+    <a href="#about">Contato</a>
+  </div>
+  <header class = "poisicao2"
+          [ngStyle]="{'background': '#011940'}"
+  > Jogo Da Velha </header>
+
+  <button class = "poisicao2"
+  (click) = "reset()"
+  [ngStyle]="{
+  'background': '#011940',
+  'left':'80%',
+  'margin-left':'-100px'
+  }"> Reset </button>
+
+  <button class = "poisicao2"
+  (click) = "novaPartida()"
+  [ngStyle]="{
+  'background': '#011940',
+  'left':'90%',
+  'margin-left':'-100px'
+  }"> Nova Partida </button>
+
+  <header class = "poisicao2"
+  [ngStyle] = " {
+  'background': (vx ? '#30ff1a': '#011573'),
+  'left':'45%',
+  'top':'20%',
+  'margin-left':'-80px',
+  'margin-top':'40px'}"> {{j1}} </header>
+
+  <header class = "poisicao2"
+  [ngStyle] = " {
+  'background': (vo ? '#30ff1a': '#011573'),
+  'left':'61%',
+  'top':'20%',
+  'margin-left':'-90px',
+  'margin-top':'40px'}"> {{j2}} </header>
+
+  <header class = "poisicao2"
+  [ngStyle] = " {
+  'left':'51%',
+  'top':'30%',
+  'background': '#011573',
+  'margin-left':'-70px',
+  'margin-top':'50px'}"> {{vxx}} </header>
+
+  <header class = "poisicao2"
+  [ngStyle] = " {
+  'left':'60%',
+  'top':'30%',
+  'background': '#011573',
+  'margin-left':'-80px',
+  'margin-top':'50px'}"> {{voo}} </header>
+
+  <body>
+  <div class=div>
+<form>
+      <input type="text" name="JogadorO"> {{jogador}} <br><br>
+      <button (click)=" click2(1)"> Play </button> <br>
+</form>
+    </div>
+
+<div class="container4">
+
+<table border ="0" class="poisicao">
   <tr>
-    <td> <button (click)="click(1)"> {{clk1}} </button> </td>
-    <td><button (click)="click(2)"> {{clk2}} </button></td>
-    <td><button (click)="click(3)"> {{clk3}} </button></td>
+    <td> <button
+      (click) = "click(1)"
+      href="#" class="myButton"
+      [ngStyle] = "{
+      'background': (a1 ? '#4dff41': '#378de5')
+    }"> {{clk1}} </button> </td>
+    <td><button
+      (click)="click(2)"
+      href="#" class="myButton"
+      [ngStyle] = " {
+      'background': (a2 ? '#4dff41': '#378de5')
+    }"
+    > {{clk2}} </button></td>
+    <td><button
+      (click)="click(3)"
+      href="#" class="myButton"
+      [ngStyle] = " {
+      'background': (a3 ? '#4dff41': '#378de5')
+    }"> {{clk3}} </button></td>
   </tr>
   <tr>
-    <td><button (click)="click(4)"> {{clk4}} </button></td>
-    <td><button (click)="click(5)"> {{clk5}} </button></td>
-    <td><button (click)="click(6)"> {{clk6}} </button></td>
+    <td> <button
+      (click)="click(4)"
+      class="myButton"
+      [ngStyle] = " {
+       'background': (a4 ? '#4dff41': '#378de5')
+      }"> {{clk4}} </button></td>
+    <td><button
+      (click)="click(5)"
+      href="#" class="myButton"
+      [ngStyle] = " {
+       'background': (a5 ? '#4dff41': '#378de5')
+    }"> {{clk5}} </button></td>
+    <td><button
+      (click)="click(6)"
+      href="#" class="myButton"
+      [ngStyle] = " {
+       'background': (a6 ? '#4dff41': '#378de5')
+    }"> {{clk6}} </button></td>
   </tr>
   <tr>
-    <td><button (click)="click(7)"> {{clk7}} </button></td>
-    <td><button (click)="click(8)"> {{clk8}} </button></td>
-    <td><button (click)="click(9)" > {{clk9}} </button></td>
+    <td><button
+      (click)="click(7)"
+      href="#" class="myButton"
+      [ngStyle] = " {
+       'background': (a7 ? '#4dff41': '#378de5')
+    }"> {{clk7}} </button></td>
+    <td><button
+      (click)="click(8)"
+      href="#" class="myButton"
+      [style.background] = "a8 ? '#4dff41': '#378de5'"
+    > {{clk8}} </button></td>
+    <td><button
+      (click)="click(9)"
+      href="#" class="myButton"
+      [ngStyle] = " {
+       'background': (a9 ? '#4dff41': '#378de5')
+    }"> {{clk9}} </button></td>
   </tr>
 </table>
+  </div>
+  </body>
+
+</h1>
